@@ -59,4 +59,7 @@ void free_stack(stack_t **stack_head);
 
 /* ============ UTILS ======================== */
 int is_number(char *str);
+int isempty(char *str);
+int _isalpha(int c);
+
 #endif /* MONTY_H */
