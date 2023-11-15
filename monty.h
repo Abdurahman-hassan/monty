@@ -56,4 +56,6 @@ void pall(stack_t **stack_head, unsigned int line_number);
 int *get_stack_val();
 void free_stack(stack_t **stack_head);
 
+/* ============ UTILS ======================== */
+int is_number(char *str);
 #endif /* MONTY_H */

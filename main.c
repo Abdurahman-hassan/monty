@@ -69,7 +69,7 @@ void open_file(char *filename)
 		value = strtok(NULL, " ");
 		if (strcmp(opcode, "push") == 0)
 		{
-			if (atoi(value) == 0)
+			if (!is_number(value) == 0)
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
 				exit(EXIT_FAILURE);
