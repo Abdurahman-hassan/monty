@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		perror("USAGE: monty file");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
