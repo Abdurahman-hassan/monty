@@ -62,7 +62,7 @@ void open_file(char *filename)
 
 	for (; getline(&line_buffer, &line_size, file_pointer) != -1; line_number++)
 	{
-		if (*line_buffer == '\n')
+		if (*line_buffer == '\n' || isempty(line_buffer) == -1)
 			continue;
 		line_buffer[strcspn(line_buffer, "\n")] = '\0';
 		opcode = strtok(line_buffer, " ");
@@ -71,6 +71,7 @@ void open_file(char *filename)
 		{
 			if (is_number(value) == 0)
 			{
+				free_stack(&head);
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
 				exit(EXIT_FAILURE);
 			}
