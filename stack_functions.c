@@ -16,7 +16,6 @@
 void push(stack_t **stack_head, unsigned int line_number)
 {
 	int *value = get_stack_val();
-	stack_t *current_node = NULL;
 	stack_t *new_node = malloc(sizeof(stack_t));
 	(void) line_number;
 
@@ -28,22 +27,12 @@ void push(stack_t **stack_head, unsigned int line_number)
 	}
 	new_node->n = *value;
 	new_node->prev = NULL;
-	new_node->next = NULL;
+	new_node->next = *stack_head;
 
-	if (*stack_head == NULL)
-	{
-		*stack_head = new_node;
-	}
-	else
-	{
-		current_node = *stack_head;
-		while (current_node->next)
-			current_node = current_node->next;
+	if (*stack_head != NULL)
+		(*stack_head)->prev = new_node;
 
-		current_node->next = new_node;
-		new_node->prev = current_node;
-	}
-
+	*stack_head = new_node;
 }
 
 /**
@@ -64,19 +53,10 @@ void pall(stack_t **stack_head, unsigned int line_number)
 	stack_t *current_node = *stack_head;
 	(void) line_number;
 
-	if (current_node && !current_node->next)
+	while (current_node != NULL)
 	{
 		printf("%d\n", current_node->n);
-		return;
-	}
-
-	while (current_node->next)
 		current_node = current_node->next;
-
-	while (current_node)
-	{
-		printf("%d\n", current_node->n);
-		current_node = current_node->prev;
 	}
 }
 
