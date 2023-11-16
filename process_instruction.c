@@ -19,6 +19,8 @@ int process_instruction(char *content,
 		{"add", sum_top_elements},
 		{"swap", swap},
 		{"nop", do_nothing},
+		{"sub", sub_top_elements},
+		{"div", div_top_elements},
 		{NULL, NULL}
 	};
 	unsigned int idx = 0;
