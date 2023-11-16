@@ -82,11 +82,6 @@ void enable_queue_mode(stack_t **stack_head, unsigned int line_number);
 void enable_stack_mode(stack_t **stack_head, unsigned int line_number);
 void append_to_queue(stack_t **queue_head, int value);
 
-/* ============ UTILS ======================== */
-int is_number(char *str);
-int isempty(char *str);
-int _isalpha(int c);
-
 /* =========== STACK_UTILS =================== */
 void prepend_node(stack_t **top, int value);
 void free_stack(stack_t *top);
