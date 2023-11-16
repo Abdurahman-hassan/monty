@@ -23,10 +23,7 @@ void sum_top_elements(stack_t **stack_top, unsigned int line_number)
 	if (stack_size < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		fclose(ctrl_block.file_stream);
-		free(ctrl_block.content);
-		free_stack(*stack_top);
-		exit(EXIT_FAILURE);
+		clean(*stack_top);
 	}
 
 	current_node = *stack_top;
