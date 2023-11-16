@@ -66,6 +66,7 @@ void swap(stack_t **stack_head, unsigned int line_number);
 
 /* ============= STACK_FUNCTIONS_2 ============= */
 void sum_top_elements(stack_t **stack_top, unsigned int line_number);
+void do_nothing(stack_t **stack_top, unsigned int line_number);
 
 /* ============ UTILS ======================== */
 int is_number(char *str);
