@@ -117,7 +117,7 @@ void div_top_elements(stack_t **stack_top, unsigned int line_number)
 	/* Check if the stack has at least two elements */
 	if (stack_size < 2)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		clean(*stack_top);
 	}
 
