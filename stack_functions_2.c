@@ -40,12 +40,13 @@ void sum_top_elements(stack_t **stack_top, unsigned int line_number)
 /**
  * do_nothing - A function that performs no operation
  * @stack_top: pointer to the top of the stack, not used in this function
- * @line_number: current line number in the bytecode file, not used in this function
+ * @line_number: current line number in the bytecode file,
+ * not used in this function
  * Return: void
  */
 void do_nothing(stack_t **stack_top, unsigned int line_number)
 {
-    (void)stack_top;   /* Explicitly stating that stack_top is unused */
-    (void)line_number; /* Explicitly stating that line_number is unused */
+	(void)stack_top;   /* Explicitly stating that stack_top is unused */
+	(void)line_number; /* Explicitly stating that line_number is unused */
 }
 
