@@ -159,8 +159,9 @@ void multiply_top_two(stack_t **stack_top, unsigned int line_number)
 
 	current_node = *stack_top;
 	product = current_node->n * current_node->next->n; /* Calculate the product */
-	current_node->next->n = product; /* Store the product in the second node from the top */
-	*stack_top = current_node->next; /* Move the top of the stack down */ 
+	/* Store the product in the second node from the top */
+	current_node->next->n = product;
+	*stack_top = current_node->next; /* Move the top of the stack down */
 	free(current_node); /* Free the original top node */
 }
 
