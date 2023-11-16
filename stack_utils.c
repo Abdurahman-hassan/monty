@@ -51,6 +51,14 @@ void free_stack(stack_t *top)
 	}
 }
 
+/**
+ * clean - Frees resources associated with the program and
+ * exits with a failure status.
+ *
+ * @stack_top: A pointer to the top of the stack to be cleaned.
+ * 
+ * Return: Nothing.
+ */
 void clean(stack_t *stack_top)
 {
 	fclose(ctrl_block.file_stream);
