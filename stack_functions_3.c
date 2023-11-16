@@ -69,3 +69,35 @@ void print_char(stack_t **stack_top, unsigned int line_number)
 
 	printf("%c\n", top_val);
 }
+
+/**
+ * print_string - Prints the ASCII characters represented by the elements
+ * in the stack until a non-printable or out-of-range value is encountered,
+ * followed by a newline character.
+ *
+ * @stack_top: A pointer to the top of the stack.
+ * @line_number: The line number in the source file where the operation occurs.
+ *
+ * Return: Nothing.
+ */
+void print_string(stack_t **stack_top, unsigned int line_number)
+{
+	stack_t *current_node;
+	(void) line_number;
+
+	if (!stack_top || !*stack_top)
+	{
+		printf("\n");
+		return;
+	}
+
+	current_node = *stack_top;
+
+	while (current_node && (current_node->n > 0 && current_node->n <= 127))
+	{
+		printf("%c", current_node->n);
+		current_node = current_node->next;
+	}
+
+	printf("\n");
+}

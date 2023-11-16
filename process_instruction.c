@@ -24,6 +24,7 @@ int process_instruction(char *content,
 		{"mul", multiply_top_two},
 		{"mod", compute_remainder},
 		{"pchar", print_char},
+		{"pstr", print_string},
 		{NULL, NULL}
 	};
 	unsigned int idx = 0;
