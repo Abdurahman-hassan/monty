@@ -25,6 +25,8 @@ int process_instruction(char *content,
 		{"mod", compute_remainder},
 		{"pchar", print_char},
 		{"pstr", print_string},
+		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	unsigned int idx = 0;

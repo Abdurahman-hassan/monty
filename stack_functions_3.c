@@ -101,3 +101,58 @@ void print_string(stack_t **stack_top, unsigned int line_number)
 
 	printf("\n");
 }
+
+/**
+ * rotl - Rotates the stack to the top, moving the top element to the bottom.
+ *
+ * @stack_top: A pointer to the top of the stack.
+ * @line_number: The line number in the source file where the operation occurs.
+ *
+ * Return: Nothing.
+ */
+void rotl(stack_t **stack_top, unsigned int line_number)
+{
+	stack_t *last_node;
+	(void) line_number;
+
+	if (!stack_top || !*stack_top || !(*stack_top)->next)
+		return;
+
+	last_node = *stack_top;
+	while (last_node->next)
+		last_node = last_node->next;
+
+	last_node->next = *stack_top;
+	(*stack_top)->prev = last_node;
+	*stack_top = (*stack_top)->next;
+	(*stack_top)->prev->next = NULL;
+	(*stack_top)->prev = NULL;
+}
+
+/**
+ * rotr - Rotates the stack to the bottom, moving the bottom
+ * element to the top.
+ *
+ * @stack_top: A pointer to the top of the stack.
+ * @line_number: The line number in the source file where the operation occurs.
+ *
+ * Return: Nothing.
+ */
+void rotr(stack_t **stack_top, unsigned int line_number)
+{
+	stack_t *last_node;
+	(void) line_number;
+
+	if (!stack_top || !*stack_top || !(*stack_top)->next)
+		return;
+
+	last_node = *stack_top;
+	while (last_node->next)
+		last_node = last_node->next;
+
+	last_node->next = *stack_top;
+	last_node->prev->next = NULL;
+	last_node->prev = NULL;
+	(*stack_top)->prev = last_node;
+	*stack_top = last_node;
+}
