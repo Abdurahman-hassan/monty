@@ -130,3 +130,37 @@ void div_top_elements(stack_t **stack_top, unsigned int line_number)
 	*stack_top = current_node->next;
 	free(current_node); /* Free the original top node */
 }
+
+/**
+ * multiply_top_two - Multiplies the top two elements of the stack.
+ * @stack_top: Pointer to the top of the stack.
+ * @line_number: Current line number in the bytecode file.
+ * Return: void
+ */
+void multiply_top_two(stack_t **stack_top, unsigned int line_number)
+{
+	stack_t *current_node;
+	int stack_length = 0, product;
+
+	current_node = *stack_top;
+	/* Count the elements in the stack */
+	while (current_node)
+	{
+		current_node = current_node->next;
+		stack_length++;
+	}
+
+	/* Check if there are at least two elements in the stack */
+	if (stack_length < 2)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		clean(*stack_top);
+	}
+
+	current_node = *stack_top;
+	product = current_node->n * current_node->next->n; /* Calculate the product */
+	current_node->next->n = product; /* Store the product in the second node from the top */
+	*stack_top = current_node->next; /* Move the top of the stack down */ 
+	free(current_node); /* Free the original top node */
+}
+
