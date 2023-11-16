@@ -1,6 +1,6 @@
 #include "monty.h"
 
-stack_t *head = NULL;
+control_block_t ctrl_block = {NULL, NULL, NULL, 0};
 
 /**
  * main - Entry point for the Monty interpreter program.
@@ -18,68 +18,47 @@ stack_t *head = NULL;
  *
  * Return: 0 on successful execution.
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+    char *line_buffer;
+    FILE *monty_file;
+    size_t buffer_size = 0;
+    ssize_t line_length = 1;
+    stack_t *stack = NULL;
+    unsigned int line_number = 0;
 
-	open_file(argv[1]);
+    if (argc != 2)
+    {
+        fprintf(stderr, "USAGE: monty file\n");
+	exit(EXIT_FAILURE);
+    }
 
-	free_stack(&head);
-	return (0);
+    monty_file = fopen(argv[1], "r");
+    ctrl_block.file_stream = monty_file;
+    if (!monty_file)
+    {
+        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+	exit(EXIT_FAILURE);
+    }
+
+    while (line_length > 0)
+    {
+        line_buffer = NULL;
+        line_length = getline(&line_buffer, &buffer_size, monty_file);
+        ctrl_block.content = line_buffer;
+        line_number++;
+
+        if (line_length > 0)
+        {
+            process_instruction(line_buffer, &stack, line_number, monty_file);
+        }
+
+        free(line_buffer);
+    }
+
+    free_stack(stack);
+    fclose(monty_file);
+
+    return (0);
 }
 
-/**
- * open_file - Opens and reads a file containing stack operations.
- *
- * @filename: The name of the file to be opened and processed.
- *
- * Description:
- *   This function opens the specified file, reads each line, and
- *   processes the stack operations accordingly. It supports the "push"
- *   operation with integer values. If an error occurs during file
- *   opening or processing, an error message is printed to stderr,
- *   and the program exits with EXIT_FAILURE.
- *
- * Return: Nothing.
- */
-void open_file(char *filename)
-{
-	FILE *file_pointer = fopen(filename, "r");
-	char *line_buffer = NULL, *opcode = NULL, *value = NULL;
-	int line_number = 1;
-	size_t line_size = 0;
-	int *stack_value = get_stack_val();
-
-	if (file_pointer == NULL)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", filename);
-		exit(EXIT_FAILURE);
-	}
-
-	for (; getline(&line_buffer, &line_size, file_pointer) != -1; line_number++)
-	{
-		if (*line_buffer == '\n' || isempty(line_buffer) == -1)
-			continue;
-		line_buffer[strcspn(line_buffer, "\n")] = '\0';
-		opcode = strtok(line_buffer, " ");
-		value = strtok(NULL, " ");
-		if (strcmp(opcode, "push") == 0)
-		{
-			if (is_number(value) == 0)
-			{
-				free_stack(&head);
-				fprintf(stderr, "L%d: usage: push integer\n", line_number);
-				exit(EXIT_FAILURE);
-			}
-			*stack_value = atoi(value);
-		}
-		get_func(opcode, &head, line_number);
-	}
-
-	free(line_buffer);
-	fclose(file_pointer);
-}
