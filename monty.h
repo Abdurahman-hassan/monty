@@ -26,9 +26,9 @@ typedef struct stack_s
 
 /**
  * struct control_block - stores essential variables
- * @argument: command argument
+ * @arg: command argument
  * @file_stream: pointer to the monty bytecode file
- * @line_data: content of the current line
+ * @content: content of the current line
  * @mode: indicator for stack or queue mode
  * Description: This structure is used throughout
  * the program to manage state
@@ -62,8 +62,11 @@ void push(stack_t **stack_head, unsigned int line_number);
 void pall(stack_t **stack_head, unsigned int line_number);
 void pint(stack_t **stack_head, unsigned int line_number);
 void pop(stack_t **stack_head, unsigned int line_number);
-void sum_top_elements(stack_t **stack_top, unsigned int line_number);
 void swap(stack_t **stack_head, unsigned int line_number);
+
+/* ============= STACK_FUNCTIONS_2 ============= */
+void sum_top_elements(stack_t **stack_top, unsigned int line_number);
+
 /* ============ UTILS ======================== */
 int is_number(char *str);
 int isempty(char *str);
