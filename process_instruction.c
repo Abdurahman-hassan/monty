@@ -17,6 +17,7 @@ int process_instruction(char *content,
 		{"pint", pint},
 		{"pop", pop},
 		{"add", sum_top_elements},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 	unsigned int idx = 0;
