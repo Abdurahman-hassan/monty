@@ -62,13 +62,8 @@ void push(stack_t **stack_head, unsigned int line_number);
 void pall(stack_t **stack_head, unsigned int line_number);
 void pint(stack_t **stack_head, unsigned int line_number);
 void pop(stack_t **stack_head, unsigned int line_number);
-<<<<<<< HEAD
 void sum_top_elements(stack_t **stack_top, unsigned int line_number);
-
-=======
 void swap(stack_t **stack_head, unsigned int line_number);
-void free_stack(stack_t *top);
->>>>>>> adb1092e2e7ad39bf9377ac07890339008ae1254
 /* ============ UTILS ======================== */
 int is_number(char *str);
 int isempty(char *str);
