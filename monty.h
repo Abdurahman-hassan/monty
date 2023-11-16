@@ -77,6 +77,11 @@ void print_string(stack_t **stack_top, unsigned int line_number);
 void rotl(stack_t **stack_top, unsigned int line_number);
 void rotr(stack_t **stack_top, unsigned int line_number);
 
+/* ============= STACK_FUNCTIONS_4 ============= */
+void enable_queue_mode(stack_t **stack_head, unsigned int line_number);
+void enable_stack_mode(stack_t **stack_head, unsigned int line_number);
+void append_to_queue(stack_t **queue_head, int value);
+
 /* ============ UTILS ======================== */
 int is_number(char *str);
 int isempty(char *str);

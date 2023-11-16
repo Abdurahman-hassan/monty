@@ -27,6 +27,8 @@ int process_instruction(char *content,
 		{"pstr", print_string},
 		{"rotl", rotl},
 		{"rotr", rotr},
+		{"queue", enable_queue_mode},
+		{"stack", enable_stack_mode},
 		{NULL, NULL}
 	};
 	unsigned int idx = 0;

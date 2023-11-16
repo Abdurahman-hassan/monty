@@ -41,7 +41,8 @@ void push(stack_t **stack_head, unsigned int line_number)
 	value = atoi(ctrl_block.arg);
 	if (ctrl_block.mode == 0)
 		prepend_node(stack_head, value);
-	/* we will add queue */
+	else
+		append_to_queue(stack_head, value);
 }
 
 /**
