@@ -13,6 +13,8 @@ int process_instruction(char *content, stack_t **stack, unsigned int line_num, F
     instruction_t instructions[] = {
         {"push", push},
 	{"pall", pall},
+    {"pint", pint},
+    {"pop", pop},
         {NULL, NULL}
     };
     unsigned int idx = 0;

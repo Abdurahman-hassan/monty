@@ -78,3 +78,60 @@ void pall(stack_t **stack_head, unsigned int line_number)
 	}
 }
 
+/**
+ * pint - Prints the value at the top of the stack.
+ *
+ * @stack_head: A double pointer to the head of the stack.
+ * @line_number: The line number in the input file.
+ *
+ * Description:
+ *   This function prints the integer value at the top of the stack.
+ *   If the stack is empty, it prints an error message to stderr and
+ *   exits the program with EXIT_FAILURE. Otherwise, it prints the
+ *   value followed by a newline character.
+ *
+ * Return: Nothing.
+ */
+void pint(stack_t **stack_head, unsigned int line_number)
+{
+	if (*stack_head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%d\n", (*stack_head)->n);
+}
+
+/**
+ * pop - Removes the top element from the stack.
+ *
+ * @stack_head: A double pointer to the head of the stack.
+ * @line_number: The line number in the input file.
+ *
+ * Description:
+ *   This function removes the top element from the stack. If the stack is
+ *   already empty, it prints an error message to stderr and exits the
+ *   program with EXIT_FAILURE. Otherwise, it updates the stack head to
+ *   point to the next element, adjusts the previous pointer of the new
+ *   head (if applicable), frees the memory of the removed node, and
+ *   continues the operation.
+ *
+ * Return: Nothing.
+ */
+void pop(stack_t **stack_head, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	if (*stack_head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	tmp = *stack_head;
+	*stack_head = tmp->next;
+	if (*stack_head != NULL)
+		(*stack_head)->prev = NULL;
+	free(tmp);
+}
