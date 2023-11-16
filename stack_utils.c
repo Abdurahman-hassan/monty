@@ -50,3 +50,11 @@ void free_stack(stack_t *top)
 		top = temp;
 	}
 }
+
+void clean(stack_t *stack_top)
+{
+	fclose(ctrl_block.file_stream);
+	free(ctrl_block.content);
+	free_stack(stack_top);
+	exit(EXIT_FAILURE);
+}

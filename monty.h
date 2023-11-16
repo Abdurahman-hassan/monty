@@ -57,7 +57,6 @@ typedef struct instruction_s
 } instruction_t;
 
 /* ============= STACK_FUNCTIONS ============= */
-
 void push(stack_t **stack_head, unsigned int line_number);
 void pall(stack_t **stack_head, unsigned int line_number);
 void pint(stack_t **stack_head, unsigned int line_number);
@@ -67,6 +66,8 @@ void swap(stack_t **stack_head, unsigned int line_number);
 /* ============= STACK_FUNCTIONS_2 ============= */
 void sum_top_elements(stack_t **stack_top, unsigned int line_number);
 void do_nothing(stack_t **stack_top, unsigned int line_number);
+void sub_top_elements(stack_t **stack_top, unsigned int line_number);
+void div_top_elements(stack_t **stack_top, unsigned int line_number);
 
 /* ============ UTILS ======================== */
 int is_number(char *str);
@@ -76,8 +77,10 @@ int _isalpha(int c);
 /* =========== STACK_UTILS =================== */
 void prepend_node(stack_t **top, int value);
 void free_stack(stack_t *top);
+void clean(stack_t *stack_top);
 
 /* =========== PROCESS_INSTRUCTION =========== */
 int process_instruction(char *content, stack_t **stack,
 		unsigned int line_num, FILE *bytecode_file);
+
 #endif /* MONTY_H */
