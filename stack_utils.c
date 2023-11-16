@@ -56,7 +56,7 @@ void free_stack(stack_t *top)
  * exits with a failure status.
  *
  * @stack_top: A pointer to the top of the stack to be cleaned.
- * 
+ *
  * Return: Nothing.
  */
 void clean(stack_t *stack_top)
