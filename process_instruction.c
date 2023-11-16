@@ -23,6 +23,7 @@ int process_instruction(char *content,
 		{"div", div_top_elements},
 		{"mul", multiply_top_two},
 		{"mod", compute_remainder},
+		{"pchar", print_char},
 		{NULL, NULL}
 	};
 	unsigned int idx = 0;

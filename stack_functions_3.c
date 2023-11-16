@@ -34,10 +34,38 @@ void compute_remainder(stack_t **stack_top, unsigned int line_number)
 		clean(*stack_top);
 	}
 
-	remainder = current_node->next->n % current_node->n; /* Compute the remainder */
+	remainder = current_node->next->n % current_node->n; /*Compute the remainder*/
 	/* Store the remainder in the second node from the top */
 	current_node->next->n = remainder;
 	*stack_top = current_node->next; /* Move the top of the stack down */
 	free(current_node); /* Free the original top node */
 }
 
+/**
+ * print_char - Prints the ASCII character corresponding to the top
+ * element of the stack.
+ *
+ * @stack_top: A pointer to the top of the stack.
+ * @line_number: The line number in the source file where the operation occurs.
+ *
+ * Return: Nothing.
+ */
+void print_char(stack_t **stack_top, unsigned int line_number)
+{
+	int top_val;
+
+	if (!stack_top || !*stack_top)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		clean(*stack_top);
+	}
+
+	top_val = (*stack_top)->n;
+	if (top_val < 0 || top_val > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		clean(*stack_top);
+	}
+
+	printf("%c\n", top_val);
+}
