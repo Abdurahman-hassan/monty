@@ -69,6 +69,10 @@ void do_nothing(stack_t **stack_top, unsigned int line_number);
 void sub_top_elements(stack_t **stack_top, unsigned int line_number);
 void div_top_elements(stack_t **stack_top, unsigned int line_number);
 void multiply_top_two(stack_t **stack_top, unsigned int line_number);
+
+/* ============= STACK_FUNCTIONS_3 ============= */
+void compute_remainder(stack_t **stack_top, unsigned int line_number);
+
 /* ============ UTILS ======================== */
 int is_number(char *str);
 int isempty(char *str);
