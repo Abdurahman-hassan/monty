@@ -135,3 +135,35 @@ void pop(stack_t **stack_head, unsigned int line_number)
 		(*stack_head)->prev = NULL;
 	free(tmp);
 }
+
+/**
+ * swap - Swaps the top two elements of the stack.
+ *
+ * @stack_head: A double pointer to the head of the stack.
+ * @line_number: The line number in the input file.
+ *
+ * Description:
+ *   This function swaps the values of the top two elements on the stack.
+ *   If the stack contains fewer than two elements, it prints an error
+ *   message to stderr and exits the program with EXIT_FAILURE.
+ *   Otherwise, it swaps the values in place without modifying the stack
+ *   structure.
+ *
+ * Return: Nothing.
+ */
+void swap(stack_t **stack_head, unsigned int line_number)
+{
+	int tmp;
+	stack_t *top = *stack_head;
+
+	if ((*stack_head )->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	tmp = top->n;
+	top->n = top->next->n;
+	top->next->n = tmp;
+}
+
