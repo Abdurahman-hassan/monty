@@ -16,6 +16,7 @@ int process_instruction(char *content,
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"add", sum_top_elements},
 		{"swap", swap},
 		{NULL, NULL}
 	};

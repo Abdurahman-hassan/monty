@@ -62,8 +62,8 @@ void push(stack_t **stack_head, unsigned int line_number);
 void pall(stack_t **stack_head, unsigned int line_number);
 void pint(stack_t **stack_head, unsigned int line_number);
 void pop(stack_t **stack_head, unsigned int line_number);
+void sum_top_elements(stack_t **stack_top, unsigned int line_number);
 void swap(stack_t **stack_head, unsigned int line_number);
-void free_stack(stack_t *top);
 /* ============ UTILS ======================== */
 int is_number(char *str);
 int isempty(char *str);
@@ -71,6 +71,7 @@ int _isalpha(int c);
 
 /* =========== STACK_UTILS =================== */
 void prepend_node(stack_t **top, int value);
+void free_stack(stack_t *top);
 
 /* =========== PROCESS_INSTRUCTION =========== */
 int process_instruction(char *content, stack_t **stack,
