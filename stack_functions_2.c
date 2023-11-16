@@ -22,8 +22,7 @@ void sum_top_elements(stack_t **stack_top, unsigned int line_number)
 	/* Check if the stack has at least two elements */
 	if (stack_size < 2)
 	{
-		fprintf(stderr, "ERROR: Line %d: Cannot perform sum, stack too short\n",
-				line_number);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);		
 		fclose(ctrl_block.file_stream);
 		free(ctrl_block.content);
 		free_stack(*stack_top);
